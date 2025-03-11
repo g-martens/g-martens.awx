@@ -19,7 +19,8 @@
 - name: Deploy AWX Operator
   ansible.builtin.shell: |
     kubectl apply -k operator
-  chdir: "{{ awx_config_dir }}"
+  args:
+    chdir: "{{ awx_config_dir }}"
 
 - name: Place Base templates
   ansible.builtin.template:
@@ -31,5 +32,6 @@
 - name: Deploy AWX
   ansible.builtin.shell: |
     kubectl apply -k base
-  chdir: "{{ awx_config_dir }}"
+  args:
+    chdir: "{{ awx_config_dir }}"
 
