@@ -29,6 +29,12 @@
   with_fileglob:
     - ../templates/base/*.j2
 
+- name: Create projects folder
+  ansible.builtin.file:
+    path: "/data/awx/projects"
+    state: directory
+    mode: "0755"
+
 - name: Deploy AWX
   ansible.builtin.shell:
     cmd: kubectl apply -k base
