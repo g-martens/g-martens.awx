@@ -22,12 +22,12 @@
   args:
     chdir: "{{ awx_config_dir }}"
 
-- name: Place Base templates
-  ansible.builtin.template:
+- name: Place Templates
+  template:
     src: "{{ item }}"
-    dest: "{{ awx_config_dir }}/base/{{ item | basename | regex_replace('\\.j2$', '') }}"
-    with_fileglob:
-      - ../templates/base/*.j2
+    dest: "{{ awx_config_dir }}/base{{ item | basename | regex_replace('\\.j2$', '') }}"
+  with_fileglob:
+    - ../templates/base/*.j2
 
 - name: Deploy AWX
   ansible.builtin.shell:
