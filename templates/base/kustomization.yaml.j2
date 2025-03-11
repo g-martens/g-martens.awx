@@ -16,7 +16,7 @@ secretGenerator:
       - username: "{{ postgres_user }}"
       - password: "{{ postgres_user_password }}"
       - sslmode: "{{ postgres_sslmode }}"
-      - type=unmanaged
+      - type: unmanaged
 
   - name: awx-admin-password
     type: Opaque
