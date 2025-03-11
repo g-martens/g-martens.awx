@@ -1,0 +1,35 @@
+---
+- name: Install Git
+  ansible.builtin.dnf:
+    name: git
+    state: present
+
+- name: Ensure directory {{ awx_config_dir }}
+  ansible.builtin.file:
+    path: "{{ awx_config_dir }}"
+    state: directory
+    mode: "0755"
+
+- name: Clone git repo
+  ansible.builtin.git:
+    repo: https://github.com/kurokobo/awx-on-k3s.git
+    dest: "{{ awx_config_dir }}"
+    version: "2.19.1"
+
+- name: Deploy AWX Operator
+  ansible.builtin.shell: |
+    kubectl apply -k operator
+  chdir: {{ awx_config_dir }}
+
+- name: Place Base templates
+  ansible.builtin.template:
+    src: "{{ item }}"
+    dest: "{{ awx_config_dir }}/base/{{ item | basename | regex_replace('\\.j2$', '') }}"
+    with_fileglob:
+      - ../templates/base/*.j2
+
+- name: Deploy AWX
+  ansible.builtin.shell: |
+    kubectl apply -k base
+  chdir: {{ awx_config_dir }}
+
