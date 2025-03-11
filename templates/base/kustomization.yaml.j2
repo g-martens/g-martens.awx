@@ -10,13 +10,13 @@ secretGenerator:
   - name: awx-postgres-configuration
     type: Opaque
     literals:
-      - host: "{{ postgres_host }}"
-      - port: "{{ postgres_port }}"
-      - database: "{{ postgres_database_name }}"
-      - username: "{{ postgres_user }}"
-      - password: "{{ postgres_user_password }}"
-      - sslmode: "{{ postgres_sslmode }}"
-      - type: unmanaged
+      - host="{{ postgres_host }}"
+      - port="{{ postgres_port }}"
+      - database="{{ postgres_database_name }}"
+      - username="{{ postgres_user }}"
+      - password="{{ postgres_user_password }}"
+      - sslmode="{{ postgres_sslmode }}"
+      - type=unmanaged
 
   - name: awx-admin-password
     type: Opaque
