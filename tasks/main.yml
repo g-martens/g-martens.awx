@@ -17,8 +17,8 @@
     version: "2.19.1"
 
 - name: Deploy AWX Operator
-  ansible.builtin.shell: |
-    kubectl apply -k operator
+  ansible.builtin.shell:
+    cmd: kubectl apply -k operator
   args:
     chdir: "{{ awx_config_dir }}"
 
@@ -30,8 +30,8 @@
       - ../templates/base/*.j2
 
 - name: Deploy AWX
-  ansible.builtin.shell: |
-    kubectl apply -k base
+  ansible.builtin.shell:
+    cmd: kubectl apply -k base
   args:
     chdir: "{{ awx_config_dir }}"
 
