@@ -21,7 +21,7 @@ secretGenerator:
   - name: awx-admin-password
     type: Opaque
     literals:
-      - password=Ansible123!
+      - password={{ awx_admin_password }}
 
   # If you want to specify SECRET_KEY for your AWX manually, uncomment following lines and change the value.
   # Refer AAC documentation for detail about SECRET_KEY.
