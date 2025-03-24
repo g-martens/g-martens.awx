@@ -15,6 +15,7 @@
     repo: https://github.com/kurokobo/awx-on-k3s.git
     dest: "{{ awx_config_dir }}"
     version: "2.19.1"
+    force: true
 
 - name: Deploy AWX Operator
   ansible.builtin.shell:
