@@ -15,6 +15,7 @@ spec:
   ingress_hosts:
     - hostname: {{ awx_hostname }}
       #tls_secret: awx-tls-certificate
+  ingress_class_name: nginx
 
   postgres_configuration_secret: awx-postgres-configuration
 
