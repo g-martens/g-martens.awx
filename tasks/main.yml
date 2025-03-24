@@ -42,8 +42,8 @@
   args:
     chdir: "{{ awx_config_dir }}"
 
-- name: Apply ingress Manifest
-  ansible.builtin.shell:
-    cmd: kubectl apply -f base/ingress.yaml
-  args:
-    chdir: "{{ awx_config_dir }}"
+#- name: Apply ingress Manifest
+#  ansible.builtin.shell:
+#    cmd: kubectl apply -f base/ingress.yaml
+#  args:
+#    chdir: "{{ awx_config_dir }}"
